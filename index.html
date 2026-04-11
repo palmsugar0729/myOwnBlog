@@ -1,6 +1,6 @@
 <!-- index.html (入口壳子，只负责布局 + 路由) -->
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -24,9 +24,28 @@
     <div class="toggle" onclick="toggleDark()">切换暗色模式</div>
   </div>
 
-  <!-- 内容容器（关键点：动态加载） -->
-  <div class="main" id="app"></div>
+  <!-- 关键：main 包住 app + footer -->
+  <div class="main">
+
+    <div id="app"></div>
+
+    <footer class="footer">
+      <div class="copyRight">
+        © 2026 Palmsugar<br>
+        本网站是个人学习网站，仅公开个人的学习内容和生活内容，用作学习的成果展示<br>
+        不得擅自将网页内容用于商业或AI学习用途，违者后果自负，本网站不承担任何责任<br>
+        若本站收录的内容无意侵犯了贵司版权，请联系我们，我们会及时处理和回复，谢谢
+      </div>
+
+      <!-- ❗ 改这里 -->
+      <div class="clock" id="clock">00:00:00</div>
+
+    </footer>
+
+  </div>
 
   <script src="script/main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
 </body>
 </html>

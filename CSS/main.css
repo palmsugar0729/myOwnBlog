@@ -1,4 +1,4 @@
-/* 通用界面 */
+/* ===== 主题变量 ===== */
 :root {
   --main: #A3C1AD;
   --bg: #ffffff;
@@ -16,8 +16,14 @@ body.dark {
   --card: #2a2a2a;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+/* ===== 重置 ===== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
+/* ===== 基础布局 ===== */
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   background: var(--bg);
@@ -25,12 +31,12 @@ body {
   display: flex;
 }
 
-/* Sidebar */
+/* ===== Sidebar ===== */
 .sidebar {
   width: 240px;
-  border-right: 1px solid var(--border);
   height: 100vh;
   padding: 30px 20px;
+  border-right: 1px solid var(--border);
 }
 
 .logo {
@@ -42,47 +48,80 @@ body {
 .menu a {
   display: block;
   margin-bottom: 15px;
-  text-decoration: none;
   color: var(--text);
+  text-decoration: none;
   cursor: pointer;
 }
 
-.menu a:hover { color: var(--main); }
+.menu a:hover {
+  color: var(--main);
+}
 
 .toggle {
   margin-top: 40px;
   padding: 6px 10px;
   border: 1px solid var(--border);
   border-radius: 6px;
-  cursor: pointer;
   font-size: 12px;
+  cursor: pointer;
 }
 
-/* Main */
+/* ===== Main（关键布局） ===== */
 .main {
   flex: 1;
-  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   max-width: 900px;
   margin: 0 auto;
 }
 
-.page { display: none; }
-.page.active { display: block; }
+/* 内容区域 */
+#app {
+  flex: 1;
+  padding: 40px;
+}
 
-h1 { margin-bottom: 20px; }
+/* ===== Footer ===== */
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 20px;
+  border-top: 1px solid var(--border);
+  font-size: 12px;
+  color: var(--sub);
+}
 
-/* Blog list */
+.copyRight {
+  max-width: 70%;
+  line-height: 1.5;
+}
+
+.clock {
+  font-size: 20px;
+  color: var(--main);
+  font-weight: 500;
+}
+
+/* ===== 通用组件 ===== */
+
+h1 {
+  margin-bottom: 20px;
+}
+
+/* 博客卡片 */
 .post {
   padding: 20px;
+  margin-bottom: 20px;
   border: 1px solid var(--border);
   border-radius: 10px;
-  margin-bottom: 20px;
   background: var(--card);
 }
 
 .post h2 {
-  color: var(--main);
   margin-bottom: 10px;
+  color: var(--main);
 }
 
 .tag {
@@ -93,7 +132,118 @@ h1 { margin-bottom: 20px; }
   border-radius: 4px;
 }
 
-/* CSS showcase */
+/* ===== Blog 页面 ===== */
+
+.blog-page {
+  max-width: 800px;
+}
+
+.page-header {
+  margin-bottom: 30px;
+}
+
+.page-header h1 {
+  font-size: 26px;
+  margin-bottom: 6px;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: var(--sub);
+}
+
+/* 分类 */
+.blog-filter {
+  margin-bottom: 20px;
+}
+
+.filter {
+  display: inline-block;
+  margin-right: 10px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  cursor: pointer;
+  background: var(--card);
+  border: 1px solid var(--border);
+}
+
+.filter.active {
+  background: var(--main);
+  color: #fff;
+}
+
+/* 列表 */
+.blog-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* 卡片 */
+.blog-card {
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--card);
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.blog-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+}
+
+.blog-title {
+  font-size: 18px;
+  margin-bottom: 6px;
+  color: var(--main);
+}
+
+.blog-desc {
+  font-size: 14px;
+  color: var(--sub);
+  margin-bottom: 8px;
+}
+
+.blog-meta {
+  font-size: 12px;
+  color: var(--sub);
+}
+
+/* ===== 博客详情页 ===== */
+
+.post-page {
+  max-width: 700px;
+}
+
+.back-btn {
+  margin-bottom: 20px;
+  padding: 6px 12px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.back-btn:hover {
+  background: var(--main);
+  color: #fff;
+}
+
+.post-title {
+  font-size: 26px;
+  margin-bottom: 6px;
+}
+
+.post-date {
+  font-size: 13px;
+  color: var(--sub);
+  margin-bottom: 20px;
+}
+
+/* ===== CSS练习区 ===== */
 .demo-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -108,7 +258,6 @@ h1 { margin-bottom: 20px; }
   align-items: center;
   justify-content: center;
   color: #fff;
-  font-size: 14px;
   transition: 0.3s;
 }
 
@@ -129,17 +278,15 @@ h1 { margin-bottom: 20px; }
 }
 
 .subtitle {
-  color: var(--sub);
   font-size: 14px;
+  color: var(--sub);
 }
 
-/* 简介 */
 .intro {
   margin-bottom: 40px;
   line-height: 1.7;
 }
 
-/* 快速入口 */
 .quick-nav {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -161,11 +308,6 @@ h1 { margin-bottom: 20px; }
   box-shadow: 0 8px 18px rgba(0,0,0,0.08);
 }
 
-.nav-card h3 {
-  margin-bottom: 6px;
-}
-
-/* 最近更新 */
 .recent h2 {
   margin-bottom: 15px;
 }
@@ -175,6 +317,46 @@ h1 { margin-bottom: 20px; }
   border-bottom: 1px solid var(--border);
 }
 
-.post-item .tag {
-  margin-right: 8px;
+/* ===== Markdown 内容美化 ===== */
+.markdown {
+  line-height: 1.8;
+  font-size: 15px;
+}
+
+.markdown h1 {
+  margin: 20px 0 10px;
+  font-size: 26px;
+}
+
+.markdown h2 {
+  margin: 18px 0 8px;
+  font-size: 20px;
+}
+
+.markdown p {
+  margin-bottom: 12px;
+}
+
+.markdown ul {
+  padding-left: 20px;
+  margin-bottom: 12px;
+}
+
+.markdown li {
+  margin-bottom: 6px;
+}
+
+.markdown blockquote {
+  border-left: 3px solid var(--main);
+  padding-left: 10px;
+  color: var(--sub);
+  margin: 10px 0;
+}
+
+.markdown pre {
+  background: var(--card);
+  padding: 10px;
+  border-radius: 6px;
+  overflow-x: auto;
+  margin-bottom: 12px;
 }
